@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace aula_6
+namespace SignSoftware
 {
     public partial class Form1 : Form
     {
@@ -17,56 +17,102 @@ namespace aula_6
             InitializeComponent();
         }
 
-        private void btn5_Click(object sender, EventArgs e)
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            maskedTextBox1.Text = Convert.ToString(monthCalendar1.SelectionEnd);
+        }
+
+        
+
+        private void BtnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void cmdAdicionar_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            lstBox.Items.Add(txtTexto.Text);
-            txtTexto.Clear();
-            txtTexto.Focus();
+
         }
 
-        private void cmdEliminar_Click(object sender, EventArgs e)
+        private void batata4(object sender, EventArgs e)
         {
-           if(lstBox.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Não tem item selecionado");
-                }
-            else
+            monthCalendar1.Hide();
+        }
+
+        private void batata3(object sender, EventArgs e)
+        {
+            monthCalendar1.Show();
+        }
+
+        private void BtnCalculate_Click(object sender, EventArgs e)
+        {
+            DateTime data;
+            int month = 0, days = 0;
+
+            data = Convert.ToDateTime(maskedTextBox1.Text);
+
+            month = data.Month;
+            days = data.Day;
+
+
+            if ((month == 12) && (days >= 22) || (month == 1) && (days <= 20)) 
             {
-                lstBox.Items.Remove(lstBox.SelectedItem);
+                PictureBox1.Image = Properties.Resources.capricorn;
+
             }
-        }
-
-        private void cmdLimparTodos_Click(object sender, EventArgs e)
-        {
-            lstBox.Items.Clear();
-        }
-
-        private void cmdLimpar_Click(object sender, EventArgs e)
-        {
-            txtTexto.Clear();
-            lstBox.Items.Clear();
-            lblPosLista.Text = "";
-            lblTotal.Text = "";
-            txtTexto.Focus();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lstBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(lstBox.SelectedIndex !=-1)
+            if ((month == 3) && (days >= 21) || (month == 4) && (days <= 20))
             {
-                lblPosLista.Text = lstBox.SelectedIndex.ToString();
-                lblTextoSel.Text = lstBox.SelectedItem.ToString();
-                lblTotal.Text = lstBox.Items.Count.ToString();
+                PictureBox1.Image = Properties.Resources.aries;
+
+            }
+            if ((month == 4) && (days >= 21) || (month == 5) && (days <= 20))
+            {
+                PictureBox1.Image = Properties.Resources.taurus;
+
+            }
+            if ((month == 5) && (days >= 21) || (month == 6) && (days <= 20))
+            {
+                PictureBox1.Image = Properties.Resources.gemini;
+
+            }
+            if ((month == 6) && (days >= 21) || (month == 7) && (days <= 22))
+            {
+                PictureBox1.Image = Properties.Resources.cancer;
+
+            }
+            if ((month == 7) && (days >= 23) || (month == 8) && (days <= 22))
+            {
+                PictureBox1.Image = Properties.Resources.lion;
+
+            }
+            if ((month == 8) && (days >= 23) || (month == 9) && (days <= 22))
+            {
+                PictureBox1.Image = Properties.Resources.virgo;
+
+            }
+            if ((month == 9) && (days >= 23) || (month == 10) && (days <= 22))
+            {
+                PictureBox1.Image = Properties.Resources.libra;
+
+            }
+            if ((month == 10) && (days >= 23) || (month == 11) && (days <= 21))
+            {
+                PictureBox1.Image = Properties.Resources.scorpio;
+
+            }
+            if ((month == 1) && (days >= 21) || (month == 2) && (days <= 18))
+            {
+                PictureBox1.Image = Properties.Resources.aquarius;
+
+            }
+            if ((month == 2) && (days >= 19) || (month == 3) && (days <= 20))
+            {
+                PictureBox1.Image = Properties.Resources.peixes;
+
+            }
+            if ((month == 11) && (days >= 22) || (month == 12) && (days <= 21))
+            {
+                PictureBox1.Image = Properties.Resources.sagittarius;
 
             }
         }
